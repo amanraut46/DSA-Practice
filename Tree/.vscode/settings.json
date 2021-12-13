@@ -5,6 +5,9 @@
         "map": "cpp",
         "ios": "cpp",
         "iostream": "cpp",
-        "algorithm": "cpp"
-    }
+        "algorithm": "cpp",
+        "stack": "cpp",
+        "xhash": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
