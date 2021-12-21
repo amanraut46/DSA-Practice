@@ -32,7 +32,7 @@ int rowWithMax1s(vector<vector<int>> arr, int n, int m)
 int main()
 {
     int N = 4 , M = 4;
-vector<vector<int>> vt = {{0, 1, 1, 1},
+    vector<vector<int>> vt = {{0, 1, 1, 1},
            {0, 0, 1, 1},
            {1, 1, 1, 1},
            {0, 0, 0, 0}};
