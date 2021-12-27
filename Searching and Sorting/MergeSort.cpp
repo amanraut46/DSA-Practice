@@ -5,71 +5,68 @@
 #include <queue>
 using namespace std;
 #define max 100
-void mergearray(int vt[], int temp[], int low1, int end1, int low2, int end2);
+void mergearray(int vt[],int low, int mid,int end);
+void copy(int vt[], int temp[], int start, int end);
 void mergeSOrt(int vt[], int start, int end)
 {
-    int temp[max];
-    if (start > end)
+    
+    int mid;
+    if (start >= end)
         return;
-    if (start < end)
-    {
-        int temp[max];
-        int mid = (start + end) / 2;
-        mergeSOrt(vt, start, mid);
-        mergeSOrt(vt, mid + 1, end);
-        mergearray(vt, temp, start, mid, mid + 1, end);
-    }
-
-        copy(vt,temp,start,end);
+    mid = (start + end)/2;
+    mergeSOrt(vt, start, mid);
+    mergeSOrt(vt, mid + 1, end);
+    mergearray(vt,start, mid,end);
+    
 }
- void copy(int vt[],int temp[],int start,int end){
-
-     for(int i=start;i<end;i++){
-         vt[i]=temp[i];
-     }
- }
-void mergearray(int vt[], int temp[], int low1, int end1, int low2, int end2)
+void copy(int vt[], int temp[], int start, int end)
 {
-    
-    int i = low1;
-    int j = low2;
-    int k = low1;
-    
-     while (i <= end1 && j <= end2)
+
+    for (int i = start; i < end; i++)
     {
-         /* code */
-         if (vt[i] < vt[j])
-         {
-             temp[k] = vt[i];
-             i++;
-         }
-         else if (vt[i] > vt[j])
-         {
-             temp[k] = vt[j];
-             j++;
-         }
-         else
-         {
-             temp[k] = vt[i];
-             i++;
-             j++;
-         }
-         k++;
-     }
-     while (i <= end1)
+        vt[i] = temp[i];
+    }
+}
+void mergearray(int vt[],int low, int mid,int end)
+{
+
+    int const subArrayOne=mid-low+1;
+    int const subArrayTwo=end-mid;
+
+    int *leftarray=new int[subArrayOne];
+    int *rightarray=new int[subArrayTwo];
+
+    for(int i=0;i<subArrayOne;i++){
+        leftarray[i]=vt[low+i];
+    }
+    for(int j=0;j<subArrayTwo;j++){
+        rightarray[j]=vt[mid+1+j];
+    }
+    int k=low;
+    int i=0;
+    int j=0;
+    while (i < subArrayOne && j < subArrayTwo)
     {
-         /* code */
-         temp[k] = vt[i];
-         i++;
-         k++;
-     }
-     while (j <= end2)
+        /* code */
+        if (leftarray[i] <= rightarray[j])
+        {
+            vt[k++] = leftarray[i++];
+        }
+        else
+        {
+            vt[k++] = rightarray[j++];
+        }
+    }
+    while (i < subArrayOne)
     {
-         /* code */
-         temp[k] = vt[j];
-         j++;
-         k++;
-     }
+        /* code */
+        vt[k++] = leftarray[i++];
+    }
+    while (j < subArrayTwo)
+    {
+        /* code */
+        vt[k++] = rightarray[j++];
+    }
 }
 int main()
 {
@@ -77,9 +74,9 @@ int main()
     int start = 0;
     int end = sizeof(vt) / sizeof(vt[0]);
     mergeSOrt(vt, start, end - 1);
-    //for (auto it : vt)
-    //{
-    //    cout << it << " ";
-    //}
+    
+    for(auto it:vt){
+        cout<<it<<" ";
+    }
     return 0;
 }
