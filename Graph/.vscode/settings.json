@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "iostream": "cpp",
+        "xutility": "cpp",
+        "ostream": "cpp",
+        "initializer_list": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
