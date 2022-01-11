@@ -9,11 +9,11 @@ using namespace std;
 class Graph
 {
 public:
-    list<int> *adj;
+    vector<int> *adj;
     int n;
     Graph(int v)
     {
-        adj = new list<int>[v];
+        adj = new vector<int>[v];
         n = v;
     };
     void addEge(int u, int v, bool bi)
