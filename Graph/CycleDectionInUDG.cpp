@@ -5,7 +5,6 @@ using namespace std;
 
 class Graph
 {
-
 public:
     int V;
     list<int> *llist;
