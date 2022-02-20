@@ -6,6 +6,7 @@ const int N = 1e5 + 10;
 int dp[N];
 using namespace std;
 
+//O(N^2)
 int fib(long long int n)
 {
 
@@ -19,6 +20,15 @@ int fib(long long int n)
     return dp[n] = fib(n - 1) + fib(n - 2);
 }
 
+//O(2^n)
+int fib1(int n){
+    if (n == 0)
+        return 0;
+    if(n==1)
+        return 1;
+
+    return fib1(n-1)+fib1(n-2);
+}
 int main()
 {
 
